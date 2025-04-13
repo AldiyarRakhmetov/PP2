@@ -4,7 +4,7 @@ import math
 # Initialize Pygame and other starting vals (Lab 8)
 pg.init()
 running = True
-WIDTH, HEIGHT = 1080, 1080
+WIDTH, HEIGHT = 700, 700
 screen  = pg.display.set_mode((WIDTH, HEIGHT))
 pg.font.init()
 

@@ -93,28 +93,25 @@ while isRunning:
     # Insert new position
     snake_body.insert(0, list(snake_pos))  
    
-    # Check if food is eaten
-    if snake_pos == food_pos:
-        food_spawn = False
-        game_score += 1
-        if game_score % 5 == 0:  #Every 5 foods level changes (Lab 8)
-            next_level()  
+    # Check if food is eaten | mmmmm, perishables (Lab 9)
+    if snake_pos == food_pos or snake_pos == peri_pos:
+        if snake_pos == food_pos:
+            food_spawn = False
+            game_score += 1
+            if game_score % 5 == 0:  #Every 5 foods level changes (Lab 8)
+                next_level()
+        if snake_pos == peri_pos:
+            peri_spawn = False
+            tick = 0
+            if rare == 3:
+                game_score += 5
+                next_level()
+            else: 
+                game_score += 1
+                if game_score % 5 == 0:  #Every 5 foods level changes (Lab 8)
+                    next_level()  
     else:
         snake_body.pop()
-
-    # mmmmm, perishables (Lab 9)
-    if snake_pos == peri_pos:
-        peri_spawn = False
-        tick = 0
-        if rare == 3:
-            game_score += 5
-            next_level()
-        else: 
-            game_score += 1
-            if game_score % 5 == 0:
-                next_level()
-    else:
-        snake_body.pop
  
     if not food_spawn:
         food_pos = [random.randrange(1, (WIDTH // 10)) * 10, random.randrange(1, (HEIGHT // 10)) * 10]
